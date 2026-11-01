@@ -1,0 +1,9 @@
+# 依赖与构建产物
+node_modules/
+*.zip
+
+# 本地环境/凭据
+.env*
+credentials*
+*.pem
+*.key

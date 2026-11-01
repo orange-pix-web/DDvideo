@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>拼多多商品素材批量打包助手</title><link rel="stylesheet" href="dashboard.css"></head>
+<body>
+  <main class="app">
+    <header><div><h1>拼多多商品素材批量打包助手</h1><p>逐链接解析主图、SKU图、详情图和SKU文字</p></div><span id="runState" class="state">未导入</span></header>
+    <section class="toolbar card">
+      <label class="file-button">导入 TXT / CSV / XLSX<input id="fileInput" type="file" accept=".txt,.csv,.xlsx,text/plain,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></label>
+      <button id="startBtn" class="primary">开始任务</button><button id="pauseBtn">暂停</button><button id="resumeBtn">继续</button><button id="retryBtn">重试失败/跳过</button><button id="summaryBtn">导出当前SKU汇总</button><button id="stopBtn" class="danger">停止</button><button id="clearBtn">清除记录</button>
+      <span id="sourceName" class="source">尚未选择文件</span>
+    </section>
+    <section class="settings card">
+      <fieldset><legend>下载内容</legend><label><input id="mainImages" type="checkbox" checked> 主图</label><label><input id="skuImages" type="checkbox" checked> SKU图</label><label><input id="detailImages" type="checkbox" checked> 详情图</label><label><input id="skuText" type="checkbox" checked> SKU文字</label><label><input id="videos" type="checkbox" checked> 视频</label></fieldset>
+      <fieldset><legend>批次选项</legend><label><input id="skuCsv" type="checkbox" checked> 完成后生成SKU汇总.csv</label><label><input id="skipHistory" type="checkbox" checked> 自动跳过历史已下载链接</label><label>商品间隔 <input id="taskIntervalSec" class="number-input" type="number" min="2" max="120" step="1" value="8"> 秒</label><label>SKU切换 <input id="skuIntervalMs" class="number-input" type="number" min="300" max="5000" step="100" value="800"> 毫秒</label></fieldset>
+    </section>
+    <section class="stats">
+      <div><b id="total">0</b><span>总任务</span></div><div><b id="waiting">0</b><span>等待</span></div><div><b id="downloading">0</b><span>处理中</span></div><div><b id="completed">0</b><span>成功</span></div><div><b id="failed">0</b><span>失败</span></div>
+    </section>
+    <section class="current card"><h2>当前任务</h2><div id="currentTask">暂无任务</div></section>
+    <section class="card"><div class="section-title"><h2>任务列表</h2><span id="taskCount">0 条</span></div><div class="table-wrap"><table><thead><tr><th>序号</th><th>商品名称</th><th>商品ID</th><th>素材数量</th><th>状态</th><th>失败/缺失提示</th><th>操作</th></tr></thead><tbody id="taskRows"></tbody></table></div></section>
+    <section class="card"><div class="section-title"><h2>运行日志</h2><button id="exportBtn">导出历史 JSON</button></div><div id="logs" class="logs"></div></section>
+  </main>
+  <script type="module" src="dashboard.js"></script>
+</body></html>

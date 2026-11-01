@@ -1,0 +1,5 @@
+#pdd-material-runner-status {
+  position: fixed; right: 16px; bottom: 16px; z-index: 2147483647;
+  padding: 8px 12px; border-radius: 8px; color: #fff; background: rgba(25, 25, 25, .82);
+  font: 13px/1.4 "Microsoft YaHei", sans-serif; box-shadow: 0 4px 18px rgba(0,0,0,.24);
+}

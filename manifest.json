@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "拼多多商品素材批量打包助手",
+  "version": "0.3.4",
+  "description": "逐链接解析拼多多主图、SKU图、详情图、SKU文字和视频，并按商品ID生成ZIP。",
+  "permissions": ["storage", "downloads", "tabs", "notifications", "alarms", "offscreen"],
+  "host_permissions": [
+    "https://*.yangkeduo.com/*",
+    "https://*.pinduoduo.com/*",
+    "http://*.pddpic.com/*",
+    "https://*.pddpic.com/*",
+    "http://*.pddugc.com/*",
+    "https://*.pddugc.com/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "打开拼多多商品素材批量打包助手"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.yangkeduo.com/*"],
+      "js": ["content/page-runner.js"],
+      "css": ["content/page-runner.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
